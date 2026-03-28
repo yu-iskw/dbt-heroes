@@ -1,0 +1,23 @@
+{
+  "name": "lightdash-content-admin",
+  "version": "0.1.0",
+  "description": "Lightdash Content Administration plugin for managing spaces, charts, and dashboards within a project.",
+  "author": {
+    "name": "yu-iskw"
+  },
+  "homepage": "https://github.com/yu-iskw/dbt-heroes/tree/main/plugins/lightdash-content-admin",
+  "repository": "https://github.com/yu-iskw/dbt-heroes",
+  "license": "Apache-2.0",
+  "keywords": ["lightdash", "dbt", "content", "admin", "spaces", "charts"],
+  "mcpServers": "./.mcp.json",
+  "skills": ["skills/*/SKILL.md"],
+  "agents": ["agents/*.md"],
+  "interface": {
+    "displayName": "Lightdash Content Admin",
+    "shortDescription": "Manage Lightdash spaces, charts, and dashboards with lineage analysis and validation.",
+    "longDescription": "The Lightdash Content Administration plugin provides skills for organizing spaces, validating content, analyzing data lineage, and managing charts and dashboards within a Lightdash project. Supports both read and write operations with safety mode enforcement.",
+    "developerName": "yu-iskw",
+    "category": "content-ops",
+    "capabilities": ["space-management", "chart-editing", "lineage-analysis", "content-validation"]
+  }
+}

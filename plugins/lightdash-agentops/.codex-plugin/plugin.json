@@ -1,0 +1,23 @@
+{
+  "name": "lightdash-agentops",
+  "version": "0.1.0",
+  "description": "Lightdash AgentOps plugin for building, managing, and autonomously tuning AI agents.",
+  "author": {
+    "name": "yu-iskw"
+  },
+  "homepage": "https://github.com/yu-iskw/dbt-heroes/tree/main/plugins/lightdash-agentops",
+  "repository": "https://github.com/yu-iskw/dbt-heroes",
+  "license": "Apache-2.0",
+  "keywords": ["lightdash", "dbt", "agentops", "evals", "agents", "tuning"],
+  "mcpServers": "./.mcp.json",
+  "skills": ["skills/*/SKILL.md"],
+  "agents": ["agents/*.md"],
+  "interface": {
+    "displayName": "Lightdash AgentOps",
+    "shortDescription": "Build, manage, and tune AI agents for Lightdash workflows with eval-driven development.",
+    "longDescription": "The Lightdash AgentOps plugin provides skills and agents for building and managing AI agents in the Lightdash ecosystem. Supports debugging agent threads, running evaluation suites, and autonomously tuning agent behavior. Designed for teams adopting eval-driven development practices.",
+    "developerName": "yu-iskw",
+    "category": "agentops",
+    "capabilities": ["agent-management", "eval-execution", "agent-debugging", "agent-tuning"]
+  }
+}

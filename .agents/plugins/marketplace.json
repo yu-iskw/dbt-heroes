@@ -1,0 +1,87 @@
+{
+  "$schema": "https://openai.com/codex/plugins/marketplace.schema.json",
+  "name": "dbt-heroes",
+  "description": "A curated collection of Lightdash plugins for the dbt ecosystem, covering data analysis, semantic layer development, content administration, and organization management.",
+  "plugins": [
+    {
+      "name": "lightdash-analysis",
+      "description": "Explore Lightdash data and generate insights from explores, charts, and dashboards.",
+      "version": "0.1.0",
+      "source": {
+        "path": "./plugins/lightdash-analysis"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_FIRST_USE"
+      },
+      "category": "analysis",
+      "interface": {
+        "displayName": "Lightdash Analysis"
+      }
+    },
+    {
+      "name": "lightdash-content-admin",
+      "description": "Manage Lightdash spaces, charts, and dashboards with lineage analysis and validation.",
+      "version": "0.1.0",
+      "source": {
+        "path": "./plugins/lightdash-content-admin"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_FIRST_USE"
+      },
+      "category": "content-ops",
+      "interface": {
+        "displayName": "Lightdash Content Admin"
+      }
+    },
+    {
+      "name": "lightdash-development",
+      "description": "Build and maintain the Lightdash semantic layer with dbt 1.10+ metrics and dimensions.",
+      "version": "0.1.0",
+      "source": {
+        "path": "./plugins/lightdash-development"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_FIRST_USE"
+      },
+      "category": "development",
+      "interface": {
+        "displayName": "Lightdash Development"
+      }
+    },
+    {
+      "name": "lightdash-org-admin",
+      "description": "Manage Lightdash organization users, groups, projects, and spaces.",
+      "version": "0.1.0",
+      "source": {
+        "path": "./plugins/lightdash-org-admin"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_FIRST_USE"
+      },
+      "category": "admin",
+      "interface": {
+        "displayName": "Lightdash Org Admin"
+      }
+    },
+    {
+      "name": "lightdash-agentops",
+      "description": "Build, manage, and tune AI agents for Lightdash workflows with eval-driven development.",
+      "version": "0.1.0",
+      "source": {
+        "path": "./plugins/lightdash-agentops"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_FIRST_USE"
+      },
+      "category": "agentops",
+      "interface": {
+        "displayName": "Lightdash AgentOps"
+      }
+    }
+  ]
+}
