@@ -1,0 +1,23 @@
+{
+  "name": "lightdash-org-admin",
+  "version": "0.1.0",
+  "description": "Lightdash Organization Administration plugin for managing users, groups, and organization settings.",
+  "author": {
+    "name": "yu-iskw"
+  },
+  "homepage": "https://github.com/yu-iskw/dbt-heroes/tree/main/plugins/lightdash-org-admin",
+  "repository": "https://github.com/yu-iskw/dbt-heroes",
+  "license": "Apache-2.0",
+  "keywords": ["lightdash", "dbt", "admin", "users", "groups", "organization"],
+  "mcpServers": "./.mcp.json",
+  "skills": ["skills/*/SKILL.md"],
+  "agents": ["agents/*.md"],
+  "interface": {
+    "displayName": "Lightdash Org Admin",
+    "shortDescription": "Manage Lightdash organization users, groups, projects, and spaces.",
+    "longDescription": "The Lightdash Organization Administration plugin provides skills for managing users and groups, reading project and space configurations, and administering organization-level settings. Supports both read and write operations with safety mode enforcement for destructive changes.",
+    "developerName": "yu-iskw",
+    "category": "admin",
+    "capabilities": ["user-management", "group-management", "project-access", "org-administration"]
+  }
+}

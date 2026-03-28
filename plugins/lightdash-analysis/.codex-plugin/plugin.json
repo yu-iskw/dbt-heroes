@@ -1,0 +1,23 @@
+{
+  "name": "lightdash-analysis",
+  "version": "0.1.0",
+  "description": "Lightdash Analysis plugin for data exploration and insight generation.",
+  "author": {
+    "name": "yu-iskw"
+  },
+  "homepage": "https://github.com/yu-iskw/dbt-heroes/tree/main/plugins/lightdash-analysis",
+  "repository": "https://github.com/yu-iskw/dbt-heroes",
+  "license": "Apache-2.0",
+  "keywords": ["lightdash", "dbt", "analysis", "data-exploration"],
+  "mcpServers": "./.mcp.json",
+  "skills": ["skills/*/SKILL.md"],
+  "agents": ["agents/*.md"],
+  "interface": {
+    "displayName": "Lightdash Analysis",
+    "shortDescription": "Explore Lightdash data and generate insights from explores, charts, and dashboards.",
+    "longDescription": "The Lightdash Analysis plugin provides skills and agents for data discovery and insight generation from Lightdash explores. Supports querying explores, reading charts, and surfacing key metrics for analysis workflows. Operates in read-only safety mode.",
+    "developerName": "yu-iskw",
+    "category": "analysis",
+    "capabilities": ["data-exploration", "chart-reading", "insight-generation"]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "lightdash-development",
+  "version": "0.1.0",
+  "description": "Lightdash Development plugin for semantic layer modeling (dbt YAML, metrics, dimensions).",
+  "author": {
+    "name": "yu-iskw"
+  },
+  "homepage": "https://github.com/yu-iskw/dbt-heroes/tree/main/plugins/lightdash-development",
+  "repository": "https://github.com/yu-iskw/dbt-heroes",
+  "license": "Apache-2.0",
+  "keywords": ["lightdash", "dbt", "semantic-layer", "metrics", "dimensions", "development"],
+  "mcpServers": "./.mcp.json",
+  "skills": ["skills/*/SKILL.md"],
+  "agents": ["agents/*.md"],
+  "interface": {
+    "displayName": "Lightdash Development",
+    "shortDescription": "Build and maintain the Lightdash semantic layer with dbt 1.10+ metrics and dimensions.",
+    "longDescription": "The Lightdash Development plugin supports dbt semantic layer modeling with skills for reading and editing metrics, dimensions, models, and parameters. Includes agents for semantic layer architecture and full project validation workflows. Targets dbt 1.10+ YAML schema.",
+    "developerName": "yu-iskw",
+    "category": "development",
+    "capabilities": ["semantic-layer-modeling", "metrics-authoring", "dimension-authoring", "project-validation", "preview-compilation"]
+  }
+}
