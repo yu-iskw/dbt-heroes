@@ -44,7 +44,9 @@ Refer to the [Product Documentation](#product-documentation) for detailed config
 
 The most efficient way to use these plugins is by adding this repository as a plugin marketplace. This enables discovery and management of all specialized plugins through the `/plugin` interface.
 
-#### Option A: Remote Marketplace (Recommended)
+#### Claude Code
+
+##### Option A: Remote Marketplace (Recommended)
 
 Add the repository as a marketplace to enable easy discovery and updates:
 
@@ -60,7 +62,7 @@ Once added, you can browse available plugins via `/plugin discover` or install t
 /plugin install lightdash-analysis@dbt-heros
 ```
 
-#### Option B: Direct Plugin Installation
+##### Option B: Direct Plugin Installation
 
 You can also install specific plugins directly using their GitHub path:
 
@@ -69,7 +71,7 @@ You can also install specific plugins directly using their GitHub path:
 /plugin install yu-iskw/dbt-heros/plugins/lightdash-analysis
 ```
 
-#### Option C: Local Installation (Development)
+##### Option C: Local Installation (Development)
 
 If you have cloned the repository locally, you can add it as a local marketplace or install individual plugins from local paths:
 
@@ -81,11 +83,42 @@ If you have cloned the repository locally, you can add it as a local marketplace
 claude plugin install ./plugins/lightdash-analysis
 ```
 
+#### Codex
+
+Each plugin ships a `.codex-plugin/plugin.json` manifest. The repo-scoped marketplace catalog is at `.agents/plugins/marketplace.json`.
+
+##### Option A: Repo-scoped Marketplace (Recommended)
+
+When working inside this repository, Codex auto-detects `.agents/plugins/marketplace.json` and surfaces all five plugins in the plugin directory. No extra setup is needed. To enable a specific plugin:
+
+```bash
+# Within Codex
+/plugin install lightdash-analysis@dbt-heroes
+```
+
+Codex caches installed plugins under `~/.codex/plugins/cache/dbt-heroes/<plugin-name>/local/`. Each plugin can be enabled or disabled individually; state is stored in `~/.codex/config.toml`.
+
+##### Option B: Personal Marketplace (cross-repo access)
+
+To make the plugins available from any repository, copy or symlink the marketplace file to the personal catalog location:
+
+```bash
+mkdir -p ~/.agents/plugins
+
+# Copy
+cp .agents/plugins/marketplace.json ~/.agents/plugins/marketplace.json
+
+# Or symlink (stays in sync with repo updates)
+ln -s "$(pwd)/.agents/plugins/marketplace.json" ~/.agents/plugins/marketplace.json
+```
+
+After restarting Codex, the dbt-heroes plugins will appear in the plugin directory regardless of the working directory.
+
 ## Development
 
 This repository is a monorepo. To add a new plugin or contribute to existing ones, refer to our [Development Guide](./docs/development.md) (coming soon).
 
-- **Standard Layout**: Every plugin follows the `.claude-plugin/plugin.json` manifest standard.
+- **Standard Layout**: Every plugin follows the `.claude-plugin/plugin.json` manifest (Claude Code) and `.codex-plugin/plugin.json` manifest (Codex) standards.
 - **CI/CD**: Unified linting and integration testing via `make lint` and `make test-integration-docker`.
 - **Codex**: Project instructions are in `AGENTS.md`; shared skills are in `.agents/skills` (symlink to `.claude/skills`).
 
