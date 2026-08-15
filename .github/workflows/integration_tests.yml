@@ -3,15 +3,20 @@ name: Integration Tests
 on:
   push:
     branches:
-      - "**"
+      - main
   pull_request: {} # yamllint disable-line empty-values
   workflow_dispatch: {} # yamllint disable-line empty-values
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 permissions:
   contents: read
 
 jobs:
   plugin-install-test:
+    if: ${{ github.event_name != 'pull_request' || github.event.pull_request.draft == false }}
     name: Plugin Install Integration Test
     runs-on: ubuntu-latest
 
