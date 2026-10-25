@@ -55,7 +55,7 @@
    - Update relevant README.md files
    - Update plugin documentation in `docs/plugins/`
    - Update skill instructions if skill behavior changes
-   - Update CLAUDE.md if project-wide patterns change
+   - Update `AGENTS.md` if project-wide patterns change
 
 ## Plugin Development Standards
 

@@ -75,10 +75,13 @@ Before implementing agents or complex skills, create **20-50 test cases** repres
 
 **Rule:** Complex features (complexity score 4+) require documented test cases before implementation.
 
-## Before Committing / Before PR
+## Quality gates (format, lint, test)
 
-- **Before commit:** `make format && make lint` (see `Makefile`: `trunk fmt` / `trunk check`)
-- **Before PR:** `make test-integration-docker` and document test evidence in the PR
+All commands are defined in the root `Makefile` (`trunk fmt` / `trunk check` / Docker integration smoke).
+
+- **Before commit:** `make format && make lint`
+- **Before PR:** `make test-integration-docker` and document test evidence in the PR description
+- **Manifest check (plugins):** `./integration_tests/validate-manifest.sh`
 
 ## Navigation
 
@@ -86,7 +89,14 @@ Before implementing agents or complex skills, create **20-50 test cases** repres
 - **Best practices (Claude):** [.claude/ANTHROPIC_BEST_PRACTICES.md](.claude/ANTHROPIC_BEST_PRACTICES.md)
 - **Plugin documentation:** [docs/plugins/lightdash_plugins.md](docs/plugins/lightdash_plugins.md)
 - **Contributor workflow:** [CONTRIBUTING.md](CONTRIBUTING.md)
-- **Key shared skills:** under `.claude/skills/` (also `.agents/skills`) — e.g. `implement-plugin`, `plugin-verification`, `implement-agent-skills`, `implement-sub-agents`, `manage-adr`
+- **Key shared skills** (under `.claude/skills/`, also `.agents/skills`):
+  - `implement-plugin` — package and distribute plugins with schema-safe manifests and validation
+  - `plugin-verification` — verify extensions, manifests, structure, and runtime loading
+  - `implement-agent-skills` — implement skills with valid frontmatter and progressive disclosure
+  - `implement-sub-agents` — create sub-agents with correct permissions and boundaries
+  - `manage-adr` — initialize, create, list, and link architecture decision records
+
+  Read a skill's `SKILL.md` when the task matches its description.
 
 ## Project-Specific Patterns
 
@@ -110,8 +120,8 @@ plugins/{plugin-name}/
 When implementing tools that mutate state:
 
 1. Define the tool in the plugin's MCP server or tool definition
-2. Add a PreToolUse hook in `hooks/hooks.json`
-3. Reference `.claude/hooks/safety-check.sh` (or plugin-specific safety script)
+2. Add a PreToolUse hook in `plugins/{plugin-name}/hooks/hooks.json`
+3. Wire the hook to `plugins/{plugin-name}/hooks/safety.sh` (see existing plugins such as `lightdash-analysis`, `lightdash-development`, `lightdash-org-admin`, and `lightdash-agentops`)
 4. Document the safety mode requirement in the tool description
 
 ### Monorepo Coordination
@@ -124,9 +134,8 @@ When implementing tools that mutate state:
 
 1. **Before creating new components:** Use `/implement-claude-extensions` (Claude Code) to determine whether you need a skill, sub-agent, hook, or team
 2. **Before implementing:** Score complexity (0-10) and choose the simplest approach
-3. **Before committing:** Run `make format && make lint`
-4. **Before opening PRs:** Run `make test-integration-docker` and document test evidence
-5. **For architectural changes:** Create an ADR using `/manage-adr`
+3. **Before commit / PR:** Follow [Quality gates (format, lint, test)](#quality-gates-format-lint-test)
+4. **For architectural changes:** Create an ADR using `/manage-adr`
 
 ## Common Workflows
 
@@ -145,18 +154,11 @@ When implementing tools that mutate state:
 2. Check related ADRs for architectural context
 3. Verify your changes maintain safety mode enforcement
 4. Update plugin documentation if behavior changes
-5. Run plugin-specific integration tests
+5. Run plugin-specific integration tests as needed (see quality gates)
 
 ### Contributing Shared Skills
 
 1. Place skill in `.claude/skills/{skill-name}/SKILL.md`
 2. Ensure skill has proper YAML frontmatter
 3. Test that skill is accessible via symlinks (`.agents/skills/`)
-4. Update `.claude/skills/README.md` if creating a new shared skill
-
-### Testing and Validation
-
-- Linting: `make lint` (runs Trunk)
-- Formatting: `make format`
-- Integration tests: `make test-integration-docker`
-- Manifest validation: `./integration_tests/validate-manifest.sh`
+4. Mirror structure and frontmatter patterns from sibling skills in `.claude/skills/`
